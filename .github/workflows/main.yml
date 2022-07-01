@@ -182,7 +182,7 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
-  ui-firefox-tests:
+  ui-edge-tests:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     container:
@@ -199,13 +199,13 @@ jobs:
           name: build
           path: build
 
-      - name: "UI Tests - Firefox"
+      - name: "UI Tests - edge"
         uses: cypress-io/github-action@v4
         with:
           start: yarn start:ci
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
-          browser: firefox
+          browser: edge
           spec: cypress/tests/ui/*
         env:
           # Recommended: pass the GitHub token lets this action correctly
